@@ -3,15 +3,15 @@
 A Terraform project that deploys a highly available static website on AWS using VPC, EC2, and ALB with a modular and production-like structure.
 
 🎯 Architecture
-1 VPC (10.0.0.0/16)
+1 VPC → 10.0.0.0/16
 3 Public Subnets (Multi-AZ)
-3 EC2 instances (NGINX)
+3 EC2 Instances running NGINX
 1 Application Load Balancer (ALB)
 ⚙️ Features
 Multi-AZ deployment (High Availability)
 Load balancing using ALB
-Automated NGINX setup (user-data)
-Terraform modular design
+Automated NGINX setup (user-data script)
+Modular Terraform design
 Remote state (S3 + optional locking)
 Infrastructure as Code (IaC)
 📁 Project Structure
@@ -22,43 +22,43 @@ terraform.tfvars
 userdata.sh
 
 modules/
- ├── vpc-module
- ├── ec2-module
- └── alb-module
+├── vpc-module
+├── ec2-module
+└── alb-module
 
 bootstrap/
 .github/workflows/
 🔧 Prerequisites
-AWS account
+AWS Account
 Terraform >= 1.0
 AWS CLI configured
-SSH key pair
-S3 bucket for state
+SSH Key Pair
+S3 Bucket for Terraform state
 🚀 Deployment
 terraform init
 terraform plan
 terraform apply
-🌐 Access App
+🌐 Access Application
 
-After apply, open:
+After deployment, open:
 
 http://<ALB-DNS-NAME>
-🧹 Destroy
+🧹 Destroy Infrastructure
 terraform destroy
 🔒 Security
-SSH via key pair
-Security groups control access
+SSH access via key pair only
+Security Groups control inbound traffic
 ALB handles traffic distribution
 📊 Outputs
 ALB DNS Name
 EC2 Public IPs
 VPC ID
-Subnets
+Subnet IDs
 🧠 Summary
 
 This project demonstrates:
 
-Real AWS architecture
+Real AWS production-like architecture
 Terraform best practices
-Modular Infrastructure design
-High Availability setup
+Modular infrastructure design
+High Availability setup across multiple AZs
