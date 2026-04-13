@@ -1,0 +1,18 @@
+alb_dns_name = "http://gotto-job-alb-1875134001.us-east-1.elb.amazonaws.com"
+alb_id = "arn:aws:elasticloadbalancing:us-east-1:532334935385:loadbalancer/app/gotto-job-alb/17383e7f981dad6c"
+ec2_instance_ids = [
+  "i-067131717762e7440",
+  "i-0094ad3bb90e7db89",
+  "i-03bb2967bec87df25",
+]
+ec2_public_ips = [
+  "18.207.110.234",
+  "54.172.228.109",
+  "34.224.70.122",
+]
+public_subnet_ids = [
+  "subnet-05de4ba4bcacb15ca",
+  "subnet-0d0cd84afc57de3ce",
+  "subnet-0d3fdc56645cd62be",
+]
+vpc_id = "vpc-0563791edb16503d6"
