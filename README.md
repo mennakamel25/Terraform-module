@@ -1,7 +1,7 @@
 🚀 Terraform Capstone — Highly Available Web App on AWS
 
 A Terraform project that deploys a highly available static website on AWS using VPC, EC2, and ALB with a modular and production-like structure.
-
+##########################################################################
 🎯 Architecture
 1 VPC → 10.0.0.0/16
 3 Public Subnets (Multi-AZ)
@@ -14,20 +14,20 @@ Automated NGINX setup (user-data script)
 Modular Terraform design
 Remote state (S3 + optional locking)
 Infrastructure as Code (IaC)
+###########################################################
 📁 Project Structure
 main.tf
 variables.tf
 outputs.tf
 terraform.tfvars
 userdata.sh
-
+##########################################################
 modules/
 ├── vpc-module
 ├── ec2-module
 └── alb-module
 
-bootstrap/
-.github/workflows/
+#############################################
 🔧 Prerequisites
 AWS Account
 Terraform >= 1.0
