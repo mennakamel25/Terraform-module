@@ -1,45 +1,64 @@
-🚀 Terraform Capstone — AWS Static Website
+🚀 Terraform Capstone — Highly Available Web App on AWS
 
-This project provisions a highly available static website on AWS using Terraform.
+A Terraform project that deploys a highly available static website on AWS using VPC, EC2, and ALB with a modular and production-like structure.
 
-📌 What It Does
-Creates a VPC
-Launches 3 EC2 instances with NGINX
-Configures an Application Load Balancer
-Uses S3 + DynamoDB for remote Terraform state
-🏗️ Architecture
-Internet → ALB → EC2 (3 instances across AZs) → VPC
-⚙️ Prerequisites
-AWS account
-EC2 Key Pair
-🪣 Backend Configuration
-
-Edit main.tf:
-
-terraform {
-  backend "s3" {
-    bucket         = "your-bucket-name"
-    key            = "terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "your-lock-table"
-    encrypt        = true
-  }
-}
-
-⚠️ Create the S3 bucket and DynamoDB table before running Terraform.
-
-🚀 Deploy
-terraform init
-terraform apply
-💣 Destroy
-terraform destroy
-📁 Structure
+🎯 Architecture
+1 VPC (10.0.0.0/16)
+3 Public Subnets (Multi-AZ)
+3 EC2 instances (NGINX)
+1 Application Load Balancer (ALB)
+⚙️ Features
+Multi-AZ deployment (High Availability)
+Load balancing using ALB
+Automated NGINX setup (user-data)
+Terraform modular design
+Remote state (S3 + optional locking)
+Infrastructure as Code (IaC)
+📁 Project Structure
 main.tf
 variables.tf
 outputs.tf
 terraform.tfvars
 userdata.sh
-👩‍💻 Author
 
-Menna Kamel
-DevOps Engineer 🚀
+modules/
+ ├── vpc-module
+ ├── ec2-module
+ └── alb-module
+
+bootstrap/
+.github/workflows/
+🔧 Prerequisites
+AWS account
+Terraform >= 1.0
+AWS CLI configured
+SSH key pair
+S3 bucket for state
+🚀 Deployment
+terraform init
+terraform plan
+terraform apply
+🌐 Access App
+
+After apply, open:
+
+http://<ALB-DNS-NAME>
+🧹 Destroy
+terraform destroy
+🔒 Security
+SSH via key pair
+Security groups control access
+ALB handles traffic distribution
+📊 Outputs
+ALB DNS Name
+EC2 Public IPs
+VPC ID
+Subnets
+🧠 Summary
+
+This project demonstrates:
+
+Real AWS architecture
+Terraform best practices
+Modular Infrastructure design
+High Availability setup
