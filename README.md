@@ -36,7 +36,9 @@ SSH Key Pair
 S3 Bucket for Terraform state
 🚀 Deployment
 terraform init
+
 terraform plan
+
 terraform apply
 🌐 Access Application
 
