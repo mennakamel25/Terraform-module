@@ -1,112 +1,49 @@
-# Terraform Capstone — Highly Available Web App on AWS
+🚀 Terraform AWS Modular Infrastructure Project
 
-A Terraform project that deploys a **highly available static website** on AWS using **VPC, EC2, and Application Load Balancer (ALB)** with a modular, production-like structure.
+This project provisions a highly available AWS infrastructure using Terraform with a modular and production-ready design approach.
 
----
+It demonstrates Infrastructure as Code (IaC) best practices, including modularization, remote state management, validation, and clean repository structure.
 
-## Architecture
-
-* 1 VPC → `10.0.0.0/16`
-* 3 Public Subnets (Multi-AZ)
-* 3 EC2 Instances running NGINX
-* 1 Application Load Balancer (ALB)
-
----
-
-## Features
-
-* Multi-AZ deployment (High Availability)
-* Load balancing using ALB
-* Automated NGINX setup (user-data script)
-* Modular Terraform design
-* Remote state (S3 + optional locking)
-* Infrastructure as Code (IaC)
-
----
-
-## Project Structure
-
-```bash
-.
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── terraform.tfvars
-├── userdata.sh
-│
-├── modules/
-│   ├── vpc-module/
-│   ├── ec2-module/
-│   └── alb-module/
-│
-├── bootstrap/
-└── .github/workflows/
-```
-
----
-
-##  Prerequisites
-
-* AWS Account
-* Terraform >= 1.0
-* AWS CLI configured
-* SSH Key Pair
-* S3 Bucket for Terraform state
-
----
-
-## Deployment
-
-```bash
+🏗️ Architecture Overview
+VPC (10.0.0.0/16)
+3 Public Subnets across multiple Availability Zones
+EC2 Instances (Application hosting)
+Application Load Balancer (ALB) for traffic distribution
+📦 Modules Structure
+modules/
+├── vpc/   → Network layer (VPC, subnets, routing)
+├── ec2/   → Compute layer (EC2 instances)
+└── alb/   → Load balancing layer (ALB, target groups)
+⚙️ Features
+Modular Terraform architecture
+Multi-AZ deployment for high availability
+Application Load Balancer for traffic management
+EC2-based application hosting
+Input validation for safer deployments
+Remote state management using S3
+Secure repository structure with .gitignore
+🚀 Getting Started
+1. Clone the repository
+git clone <your-repo-url>
+cd <repo-name>
+2. Initialize Terraform
 terraform init
+3. Validate configuration
+terraform validate
+4. Plan deployment
 terraform plan
+5. Apply infrastructure
 terraform apply
-```
-
----
-
-## Access Application
-
-After deployment, open:
-
-```
+🌐 Access Application
 http://<ALB-DNS-NAME>
-```
-
----
-
-##  Destroy Infrastructure
-
-```bash
+🧹 Destroy Infrastructure
 terraform destroy
-```
-
----
-
-## Security
-
-* SSH access via key pair only
-* Security Groups control inbound traffic
-* ALB handles traffic distribution
-
----
-
-## Outputs
-
-* ALB DNS Name
-* EC2 Public IPs
-* VPC ID
-* Subnet IDs
-
----
-
-## Summary
+🧠 Summary
 
 This project demonstrates:
 
-* Real AWS production-like architecture
-* Terraform best practices
-* Modular infrastructure design
-* High Availability across multiple AZs
-
----
+Real AWS infrastructure design
+Modular Terraform architecture
+High Availability across multiple AZs
+Clean DevOps practices (validation, state management, repo hygiene)
+Production-like cloud setup
